@@ -5,7 +5,8 @@ import Navbar from "./components/Navbar"
 import Hero from "./components/Hero";
 import About from "./components/About";
 import Skills from "./components/Skills";
-import myProject from "./components/myProject";
+// 1. Смени го името на импортот во MyProject (голема буква)
+import MyProject from "./components/myProject"; 
 
 const App=()=>{
   const [darkmode,setDarkMode]= useState(true);
@@ -20,7 +21,7 @@ const App=()=>{
   },[])
 
   useEffect(() => {
-  AOS.refresh()
+    AOS.refresh()
   }, [darkmode])
 
   const toggleDarkMode = () =>{
@@ -28,21 +29,22 @@ const App=()=>{
     setDarkMode(newMode);
     document.documentElement.classList.toggle('dark');
   }
-  return(
 
+  return(
     <div className={
       darkmode
       ? 'bg-linear-to-br from-gray-900 via-[#0d182e] to-gray-900 min-h-screen'
-      : 'bg-linear-to-br from-gray-50 to blue-50 min-h-screen'
+      : 'bg-linear-to-br from-gray-50 to-blue-50 min-h-screen'
     }>
-
         <Navbar darkmode={darkmode} toggleDarkMode={toggleDarkMode} />
         <Hero darkmode={darkmode}/>
         <About darkmode={darkmode} />
         <Skills darkmode={darkmode} />
-        <myProject darkmode={darkmode} />
+        
+        {/* 2. СМЕНИ ГО ОВА ВО <MyProject /> (со голема буква) */}
+        <MyProject darkmode={darkmode} /> 
     </div>
   )
 }
 
-export default App
+export default App;
