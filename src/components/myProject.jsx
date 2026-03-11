@@ -1,7 +1,7 @@
 import React from 'react';
 import weatherImg from '../assets/weather.png';
 
-const myProject = ({ darkmode }) => {
+const MyProject = ({ darkmode }) => {
   const projects = [
     {
       title: "Weather App",
@@ -125,4 +125,4 @@ const myProject = ({ darkmode }) => {
 };
 
 
-export default myProject;
+export default MyProject;

@@ -5,8 +5,7 @@ import Navbar from "./components/Navbar"
 import Hero from "./components/Hero";
 import About from "./components/About";
 import Skills from "./components/Skills";
-// 1. Смени го името на импортот во MyProject (голема буква)
-import MyProject from "./components/myProject"; 
+import MyProject from "./components/MyProject"
 
 const App=()=>{
   const [darkmode,setDarkMode]= useState(true);
@@ -40,8 +39,7 @@ const App=()=>{
         <Hero darkmode={darkmode}/>
         <About darkmode={darkmode} />
         <Skills darkmode={darkmode} />
-        
-        {/* 2. СМЕНИ ГО ОВА ВО <MyProject /> (со голема буква) */}
+      
         <MyProject darkmode={darkmode} /> 
     </div>
   )
