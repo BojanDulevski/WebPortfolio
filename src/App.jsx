@@ -5,7 +5,8 @@ import Navbar from "./components/Navbar"
 import Hero from "./components/Hero";
 import About from "./components/About";
 import Skills from "./components/Skills";
-import MyProject from "./components/MyProject"
+import MyProject from "./components/myProject";
+import LetsConnect from "./components/LetsConnect"
 
 const App=()=>{
   const [darkmode,setDarkMode]= useState(true);
@@ -41,6 +42,7 @@ const App=()=>{
         <Skills darkmode={darkmode} />
       
         <MyProject darkmode={darkmode} /> 
+        <LetsConnect darkmode={darkmode} /> 
     </div>
   )
 }

@@ -1,28 +1,35 @@
 import about from '../assets/hero.png'
 
-const About = ({ darkmode }) => { // 1. Овде е со мала
+const About = ({ darkmode }) => {
+  // Дефинирање на боите за да се совпаѓаат со Hero и Navbar
+  const theme = {
+    accent: darkmode ? 'text-[#A3AD91]' : 'text-[#556B2F]',
+    textPrimary: darkmode ? 'text-white' : 'text-[#1B1F13]',
+    textSecondary: darkmode ? 'text-gray-400' : 'text-gray-600',
+    bgSection: darkmode ? 'bg-[#121412]' : 'bg-[#FDFDFB]',
+    cardBg: darkmode ? 'bg-[#1A1C1A]/50' : 'bg-[#F0F4E8]/50',
+    btnBg: darkmode ? 'bg-[#556B2F] hover:bg-[#6B8E23]' : 'bg-[#4A5D23] hover:bg-[#3A4A1C]',
+  };
+
   return (
-    <section id="about" className={`min-h-screen overflow-hidden flex items-center justify-center px-4 sm:px-6 ${
-      darkmode ? 'bg-gray-900' : 'bg-gray-50' // 2. И овде
-    }`}>
+    <section id="about" className={`min-h-screen overflow-hidden flex items-center justify-center px-6 py-20 transition-colors duration-500 ${theme.bgSection}`}>
       
-      <div className="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-center">
+      <div className="max-w-7xl w-full grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
         
-        {/* IMAGE SECTION */}
+        {/* IMAGE SECTION - БЕЗ ЅВЕЗДА */}
         <figure
-          data-aos='fade-up'
+          data-aos='fade-right'
           data-aos-delay='300'
-          className="flex flex-wrap justify-center gap-4 relative order-2 lg:order-1"
+          className="flex justify-center relative order-2 lg:order-1"
         >
-          <div className="relative w-72 h-72 lg:w-96 lg:h-96">
-            <div className="absolute -inset-4 lg:-inset-20 bg-linear-to-l from-[#f97316] via-[#fb923c] to-[#f59e0b] rotate-12 star-shape z-0" 
-                data-aos='zoom-in' 
-                data-aos-delay='600'>
-            </div>
+          <div className="relative w-full max-w-md">
+            {/* Суптилен раб околу сликата за маслинест ефект */}
+            <div className={`absolute -inset-3 rounded-[2.5rem] border-2 ${darkmode ? 'border-[#556B2F]/30' : 'border-[#A3AD91]/40'}`}></div>
+            
             <img
               src={about}
               alt="About Me"
-              className="absolute inset-0 w-full h-full object-cover rounded-lg z-10"
+              className="relative w-full h-auto object-cover rounded-[2rem] z-10 shadow-2xl"
               data-aos='zoom-in'
               data-aos-delay='500'
             />
@@ -36,51 +43,52 @@ const About = ({ darkmode }) => { // 1. Овде е со мала
           className='text-center lg:text-left relative order-1 lg:order-2'
         >
           <header>
-            <h1 
-              className='text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 sm:mb-6 text-transparent bg-linear-to-r from-orange-400 to-orange-600 bg-clip-text'
+            <h2 
+              className={`text-5xl sm:text-6xl lg:text-7xl font-black mb-8 tracking-tighter ${theme.textPrimary}`}
               data-aos='fade-up'
               data-aos-delay='400'
             >
-              About Me
-            </h1>
+              About <span className={theme.accent}>Me</span>
+            </h2>
           </header>
 
-          <p className={`text-sm sm:text-base lg:text-lg xl:text-xl mb-6 sm:mb-8 leading-relaxed bg-linear-to-r from-orange-900/10 to-orange-900/5 p-4 sm:p-6 rounded-xl sm:rounded-2xl backdrop-blur-sm ${
-            darkmode ? 'text-gray-300' : 'text-gray-700' // 3. И овде
-          }`}
-          data-aos='fade-up'
-          data-aos-delay='500'>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolore suscipit expedita blanditiis temporibus nostrum nulla fugit consequuntur!
-          </p>
+          <div className={`text-xl sm:text-2xl mb-10 leading-relaxed p-6 sm:p-8 rounded-3xl backdrop-blur-sm border ${darkmode ? 'border-white/5' : 'border-black/5'} ${theme.cardBg} ${theme.textSecondary}`}
+            data-aos='fade-up'
+            data-aos-delay='500'
+          >
+            I am currently a <span className={`font-bold ${theme.textPrimary}`}>3rd-year student at FINKI</span>, 
+            deep-diving into the world of algorithms and high-performance web development. 
+            Over the past <span className={`font-bold ${theme.textPrimary}`}>3+ years of education</span> and 
+            <span className={`font-bold ${theme.textPrimary}`}> 2+ years of practical coding</span>, 
+            I’ve focused on building clean, efficient, and scalable digital solutions. 
+            My journey is driven by a constant curiosity for new technologies and a commitment to writing high-quality code.
+          </div>
 
           {/* STATS GRID */}
-          <div className='flex flex-wrap justify-center lg:justify-start gap-4 sm:gap-6 lg:gap-8 mb-6 sm:mb-8'>
-            <div className='text-center' data-aos='zoom-in' data-aos-delay='600'>
-              <div className='text-2xl sm:text-3xl lg:text-4xl font-bold text-orange-400'>5+</div>
-              <div className={`text-xs sm:text-sm lg:text-base ${darkmode ? 'text-gray-300' : 'text-gray-600'}`}>
-                Education
+          <div className='grid grid-cols-3 gap-4 mb-10'>
+            <div className='flex flex-col' data-aos='zoom-in' data-aos-delay='600'>
+              <div className={`text-3xl sm:text-4xl lg:text-5xl font-black ${theme.accent}`}>3+</div>
+              <div className={`text-sm sm:text-base font-bold uppercase tracking-widest ${theme.textSecondary}`}>
+                Years Study
               </div>
             </div>
 
-            <div className='text-center' data-aos='zoom-in' data-aos-delay='650'>
-              <div className='text-2xl sm:text-3xl lg:text-4xl font-bold text-orange-400'>10+</div>
-              <div className={`text-xs sm:text-sm lg:text-base ${darkmode ? 'text-gray-300' : 'text-gray-600'}`}>
-                Years Experience
+            <div className='flex flex-col' data-aos='zoom-in' data-aos-delay='650'>
+              <div className={`text-3xl sm:text-4xl lg:text-5xl font-black ${theme.accent}`}>2+</div>
+              <div className={`text-sm sm:text-base font-bold uppercase tracking-widest ${theme.textSecondary}`}>
+                Exp Years
               </div>
             </div>
 
-            <div className='text-center' data-aos='zoom-in' data-aos-delay='700'>
-              <div className='text-2xl sm:text-3xl lg:text-4xl font-bold text-orange-400'>10+</div>
-              <div className={`text-xs sm:text-sm lg:text-base ${darkmode ? 'text-gray-300' : 'text-gray-600'}`}>
-                Projects Completed
+            <div className='flex flex-col' data-aos='zoom-in' data-aos-delay='700'>
+              <div className={`text-3xl sm:text-4xl lg:text-5xl font-black ${theme.accent}`}>15+</div>
+              <div className={`text-sm sm:text-base font-bold uppercase tracking-widest ${theme.textSecondary}`}>
+                Projects
               </div>
             </div>
           </div> 
 
-          <button className={`w-full sm:w-auto inline-flex items-center justify-center border-0 py-3 px-6 
-            sm:px-8 rounded-full text-base sm:text-lg font-semibold transition-all duration-300 
-            transform hover:shadow-[0_0_40px_rgb(255,165,0,0.7)] hover:scale-105 
-            ${darkmode ? 'text-white bg-orange-500/10' : 'text-gray-800 bg-white/90'}`} // 4. И овде
+          <button className={`w-full sm:w-auto inline-flex items-center justify-center py-5 px-12 rounded-2xl text-xl font-black uppercase tracking-widest text-white transition-all duration-300 transform hover:-translate-y-1 shadow-xl cursor-pointer ${theme.btnBg}`}
             data-aos='fade-up'
             data-aos-delay='800'
           >

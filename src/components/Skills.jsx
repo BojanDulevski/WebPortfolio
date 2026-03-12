@@ -1,3 +1,5 @@
+import React from 'react' // Додадено
+import { motion } from 'framer-motion' // Ова го решава Uncaught ReferenceError
 import javascript from '../assets/JavaScript.png'
 import react from '../assets/react.svg'
 import tailwind from '../assets/tailwind.png'
@@ -10,79 +12,85 @@ import git from '../assets/git.png'
 
 const Skills = ({ darkmode }) => {
   const skills = [
-    { name: 'JavaScript', icon: javascript, level: 95, color: 'from-orange-500 to-amber-500' },
-    { name: 'React', icon: react, level: 90, color: 'from-blue-500 to-cyan-500' },
-    { name: 'Tailwind CSS', icon: tailwind, level: 92, color: 'from-teal-500 to-cyan-500' },
-    { name: 'Java', icon: java, level: 85, color: 'from-cyan-500 to-blue-500' },
-    { name: 'Python', icon: python, level: 75, color: 'from-blue-600 to-indigo-400' },
-    { name: 'C++', icon: cplusplus, level: 92, color: 'from-blue-500 to-teal-400' },
-    { name: 'Django', icon: django, level: 92, color: 'from-green-500 to-emerald-700' },
-    { name: 'BootStrap', icon: bootstrap, level: 92, color: 'from-purple-500 to-indigo-600' },
+    { name: 'C++', icon: cplusplus, level: 100, color: 'from-blue-600 to-blue-400' },
+    { name: 'JavaScript', icon: javascript, level: 95, color: 'from-yellow-500 to-amber-400' },
+    { name: 'React', icon: react, level: 90, color: 'from-cyan-500 to-blue-400' },
+    { name: 'Tailwind CSS', icon: tailwind, level: 92, color: 'from-teal-400 to-cyan-500' },
+    { name: 'Java', icon: java, level: 85, color: 'from-red-600 to-orange-500' },
+    { name: 'Python', icon: python, level: 75, color: 'from-blue-500 to-yellow-500' },
+    { name: 'Django', icon: django, level: 92, color: 'from-emerald-700 to-green-500' },
+    { name: 'BootStrap', icon: bootstrap, level: 92, color: 'from-purple-600 to-indigo-500' },
     { name: 'Git', icon: git, level: 92, color: 'from-orange-600 to-red-500' }
   ];
 
+  const theme = {
+    accent: darkmode ? 'text-[#A3AD91]' : 'text-[#556B2F]',
+    textPrimary: darkmode ? 'text-white' : 'text-[#1B1F13]',
+    textSecondary: darkmode ? 'text-gray-400' : 'text-gray-600',
+    bgSection: darkmode ? 'bg-[#121412]' : 'bg-[#FDFDFB]',
+    cardBg: darkmode ? 'bg-[#1A1C1A] border-[#2A2D23]' : 'bg-white border-gray-200',
+    barContainer: darkmode ? 'bg-gray-800' : 'bg-gray-200',
+    btnBg: darkmode ? 'bg-[#556B2F] hover:bg-[#6B8E23]' : 'bg-[#4A5D23] hover:bg-[#3A4A1C]',
+  };
+
   return (
-    <section id="skills" className={`py-20 transition-colors duration-300 ${darkmode ? 'bg-[#0f172a]' : 'bg-gray-50'}`}>
-      <div className="container px-5 mx-auto">
+    <section id="skills" className={`py-24 transition-colors duration-500 ${theme.bgSection}`}>
+      <div className="container px-6 mx-auto max-w-7xl">
         
         {/* HEADER SECTION */}
-        <div className="text-center mb-16" data-aos="fade-up">
-          <h1 className={`sm:text-5xl text-4xl font-extrabold title-font mb-4 ${darkmode ? 'text-white' : 'text-gray-900'}`}>
-            My Skills
-          </h1>
-          <div className="flex justify-center mt-6">
-            <button className={`inline-flex items-center justify-center py-3 px-10 rounded-full text-lg font-bold transition-all duration-300 transform hover:scale-105 hover:shadow-[0_0_30px_rgba(249,115,22,0.5)] ${darkmode ? 'bg-orange-500 text-white' : 'bg-orange-500 text-white'}`}>
-              Learn More
-            </button>
-          </div>
+        <div className="text-center mb-20" data-aos="fade-up">
+          <h2 className={`text-5xl sm:text-6xl lg:text-7xl font-black mb-6 tracking-tighter ${theme.textPrimary}`}>
+            MY <span className={theme.accent}>SKILLS</span>
+          </h2>
+          <div className={`h-1.5 w-24 mx-auto rounded-full mb-8 ${darkmode ? 'bg-[#A3AD91]' : 'bg-[#556B2F]'}`}></div>
+          
+          <button className={`inline-flex items-center justify-center py-4 px-12 rounded-2xl text-xl font-black uppercase tracking-widest text-white transition-all duration-300 transform hover:-translate-y-1 shadow-xl cursor-pointer ${theme.btnBg}`}>
+            View Full Stack
+          </button>
         </div>
 
         {/* SKILLS GRID */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
           {skills.map((skill, index) => (
             <div 
               key={index} 
               data-aos="fade-up" 
               data-aos-delay={index * 100}
-              className={`relative group p-6 rounded-2xl border transition-all duration-300 hover:-translate-y-2 ${
-                darkmode 
-                ? 'bg-[#1e293b]/50 border-gray-700 hover:border-orange-500/50' 
-                : 'bg-white border-gray-200 shadow-md hover:shadow-xl'
-              }`}
+              className={`relative group p-8 rounded-[2rem] border-2 transition-all duration-500 hover:shadow-2xl ${theme.cardBg} hover:scale-[1.02]`}
             >
-              <div className="flex items-center mb-5">
-                <div className={`p-3 rounded-xl ${darkmode ? 'bg-gray-800' : 'bg-gray-100'}`}>
-                  <img src={skill.icon} alt={skill.name} className="w-8 h-8 object-contain" />
+              <div className="flex items-center mb-8">
+                <div className={`p-4 rounded-2xl transition-transform duration-500 group-hover:rotate-12 ${darkmode ? 'bg-[#121412]' : 'bg-gray-50'}`}>
+                  <img src={skill.icon} alt={skill.name} className="w-10 h-10 object-contain" />
                 </div>
-                <h2 className={`ml-4 text-xl font-bold ${darkmode ? 'text-white' : 'text-gray-800'}`}>
+                <h3 className={`ml-4 text-2xl font-black tracking-tight ${theme.textPrimary}`}>
                   {skill.name}
-                </h2>
+                </h3>
               </div>
 
-              {/* PROFICIENCY LABEL & PERCENT */}
-              <div className="flex justify-between items-end mb-2">
-                <span className={`text-sm font-medium ${darkmode ? 'text-gray-400' : 'text-gray-500'}`}>
+              <div className="flex justify-between items-end mb-3">
+                <span className={`text-sm font-black uppercase tracking-widest ${theme.textSecondary}`}>
                   Proficiency
                 </span>
-                <span className="text-orange-500 font-bold text-sm">
+                <span className={`font-black text-xl bg-gradient-to-r ${skill.color} bg-clip-text text-transparent`}>
                   {skill.level}%
                 </span>
               </div>
 
               {/* PROGRESS BAR */}
-              <div className={`w-full rounded-full h-3 ${darkmode ? 'bg-gray-700' : 'bg-gray-200'}`}>
-                <div 
-                  className={`h-3 rounded-full bg-gradient-to-r ${skill.color} shadow-[0_0_10px_rgba(0,0,0,0.2)] transition-all duration-1000`}
-                  style={{ width: `${skill.level}%` }}
-                ></div>
+              <div className={`w-full rounded-full h-4 overflow-hidden p-1 ${theme.barContainer}`}>
+                <motion.div 
+                  initial={{ width: 0 }}
+                  whileInView={{ width: `${skill.level}%` }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 1.5, ease: "easeOut" }}
+                  className={`h-full rounded-full bg-gradient-to-r ${skill.color} shadow-lg`}
+                ></motion.div>
               </div>
               
-              {/* DECORATIVE LINE UNDER BAR */}
-              <div className="mt-3 w-12 h-1 bg-orange-500/30 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
+              <div className={`mt-6 w-0 group-hover:w-full h-1 transition-all duration-700 rounded-full bg-gradient-to-r ${skill.color}`}></div>
             </div>
           ))}
         </div>
-
       </div>
     </section>
   );
