@@ -5,7 +5,7 @@ import Navbar from "./components/Navbar"
 import Hero from "./components/Hero";
 import About from "./components/About";
 import Skills from "./components/Skills";
-import MyProject from "./components/myProject";
+import MyProject from "./components/MyProject";
 import LetsConnect from "./components/LetsConnect"
 
 const App=()=>{
