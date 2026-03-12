@@ -1,4 +1,4 @@
-import javascript from '../assets/javaScript.png'
+import javascript from '../assets/JavaScript.png'
 import react from '../assets/react.svg'
 import tailwind from '../assets/tailwind.png'
 import java from '../assets/java.png'
