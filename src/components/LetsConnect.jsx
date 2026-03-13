@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Mail, Github, Linkedin, ArrowRight } from 'lucide-react';
-import myPicture from '../assets/pictureproject.png'; 
+import myPicture from '../assets/connect.png'; 
 
 const LetsConnect = ({ darkmode }) => {
   const socialLinks = [

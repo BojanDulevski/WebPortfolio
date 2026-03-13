@@ -1,36 +1,45 @@
-import instagram from '../assets/instagram.png'
-import tiktok from '../assets/tiktok.png'
-import github from '../assets/github.png'
-import youtube from '../assets/youtube.png' 
+import React from 'react';
 import hero from '../assets/hero.png'
-import CV from '../assets/CV.pdf'
-import { DownloadIcon, Mail } from 'lucide-react'
+import CV from '../assets/CV.png'
+import { DownloadIcon, Mail as MailLucide } from 'lucide-react'
+import { FaInstagram, FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
 
 const Hero = ({ darkmode }) => {
+  
   const socialIcons = [
-    { icon: instagram, alt: 'Instagram' },
-    { icon: tiktok, alt: 'tiktok' },
-    { icon: github, alt: 'github' },
-    { icon: youtube, alt: 'youtube' },
+    { 
+      icon: <FaInstagram />, 
+      link: 'https://www.instagram.com/duleskib/', 
+      hoverColor: 'hover:text-[#E4405F]' 
+    },
+    { 
+      icon: <FaEnvelope />, 
+      link: 'mailto:bojan.deuleto7@gmail.com', 
+      hoverColor: 'hover:text-[#556B2F]' 
+    },
+    { 
+      icon: <FaGithub />, 
+      link: 'https://github.com/BojanDulevski', 
+      hoverColor: 'hover:text-[#6e5494]' 
+    },
+    { 
+      icon: <FaLinkedin />, 
+      link: 'https://www.linkedin.com/in/bojan-dulevski-53711a321/', 
+      hoverColor: 'hover:text-[#0A66C2]' 
+    },
   ]
 
-  const darkTheme = {
-    textPrimary: 'text-white',
-    textSecondary: 'text-gray-400',
-    buttonOutline: 'border-[#A3AD91] text-[#A3AD91] hover:bg-[#A3AD91] hover:text-[#1A1C1A]',
-    buttonGradient: 'bg-[#556B2F] hover:bg-[#6B8E23] shadow-[0_10px_20px_rgba(85,107,47,0.3)]',
-    accentColor: 'text-[#A3AD91]'
+  const theme = {
+    textPrimary: darkmode ? 'text-white' : 'text-[#1B1F13]',
+    textSecondary: darkmode ? 'text-gray-400' : 'text-gray-600',
+    buttonOutline: darkmode 
+      ? 'border-[#A3AD91] text-[#A3AD91] hover:bg-[#A3AD91] hover:text-[#1A1C1A]' 
+      : 'border-[#556B2F] text-[#556B2F] hover:bg-[#556B2F] hover:text-white',
+    buttonGradient: darkmode 
+      ? 'bg-[#556B2F] hover:bg-[#6B8E23] shadow-[0_10px_20px_rgba(85,107,47,0.3)]' 
+      : 'bg-[#4A5D23] hover:bg-[#3A4A1C] shadow-[0_10px_20px_rgba(74,93,35,0.2)]',
+    accentColor: darkmode ? 'text-[#A3AD91]' : 'text-[#556B2F]'
   };
-
-  const lightTheme = {
-    textPrimary: 'text-[#1B1F13]',
-    textSecondary: 'text-gray-600',
-    buttonOutline: 'border-[#556B2F] text-[#556B2F] hover:bg-[#556B2F] hover:text-white',
-    buttonGradient: 'bg-[#4A5D23] hover:bg-[#3A4A1C] shadow-[0_10px_20px_rgba(74,93,35,0.2)]',
-    accentColor: 'text-[#556B2F]'
-  };
-
-  const theme = darkmode ? darkTheme : lightTheme;
 
   return (
     <div className={`relative overflow-hidden min-h-screen flex flex-col justify-center transition-colors duration-500 ${darkmode ? 'bg-[#121412]' : 'bg-[#FDFDFB]'}`}>
@@ -39,19 +48,17 @@ const Hero = ({ darkmode }) => {
           
           <div className='lg:w-3/5 w-full flex flex-col items-center lg:items-start text-center lg:text-left'>
             
-            <div className='flex justify-center lg:justify-start gap-6 mb-10 w-full'>
+            <div className='flex justify-center lg:justify-start gap-8 mb-10 w-full'>
               {socialIcons.map((social, index) => (
                 <a
                   key={index}
-                  href='#'
+                  href={social.link}
                   target='_blank'
-                  className='transform hover:scale-125 hover:-translate-y-1 transition-all duration-300 cursor-pointer'
+                  rel="noopener noreferrer"
+                  className={`text-3xl sm:text-4xl transition-all duration-300 transform hover:scale-125 hover:-translate-y-1 cursor-pointer 
+                    ${darkmode ? 'text-gray-300' : 'text-gray-700'} ${social.hoverColor}`}
                 >
-                  <img
-                    src={social.icon}
-                    alt={social.alt}
-                    className={`w-10 h-10 sm:w-12 sm:h-12 object-contain transition-all duration-300 ${darkmode ? 'brightness-110' : 'opacity-90 hover:opacity-100'}`} 
-                  />
+                  {social.icon}
                 </a>
               ))}
             </div>
@@ -60,7 +67,6 @@ const Hero = ({ darkmode }) => {
               Hi, I'm <span className={`${theme.accentColor}`}>Bojan</span>
             </h1>
 
-            {/* Опис кој звучи природно и човечки */}
             <p className={`mb-10 leading-tight max-w-3xl text-xl sm:text-2xl font-light ${theme.textSecondary}`}>
               I'm a student at <span className={`font-semibold ${darkmode ? 'text-white' : 'text-black'}`}>FINKI</span> with a real passion for coding. 
               I don't just study for the grades—I love diving deep into how things work and building apps that actually solve problems. 
@@ -78,7 +84,7 @@ const Hero = ({ darkmode }) => {
 
                 <a href="#contact" className='cursor-pointer w-full sm:w-auto'>
                   <button className={`w-full sm:min-w-[240px] inline-flex items-center justify-center py-5 px-10 rounded-2xl text-xl font-bold text-white transition-all duration-300 transform hover:-translate-y-1 cursor-pointer ${theme.buttonGradient}`}>
-                    <Mail className='w-7 h-7 mr-3'/>
+                    <MailLucide className='w-7 h-7 mr-3'/>
                     Contact Me
                   </button>
                 </a>
