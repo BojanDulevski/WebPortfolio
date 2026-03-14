@@ -42,13 +42,14 @@ const Hero = ({ darkmode }) => {
   };
 
   return (
-    <div className={`relative overflow-hidden min-h-screen flex flex-col justify-center transition-colors duration-500 ${darkmode ? 'bg-[#121412]' : 'bg-[#FDFDFB]'}`}>
+    /* Dodadeno pt-24 (padding top) za da ne go pokriva navbar-ot na mobilen */
+    <div className={`relative overflow-hidden min-h-screen flex flex-col pt-24 lg:pt-0 lg:justify-center transition-colors duration-500 ${darkmode ? 'bg-[#121412]' : 'bg-[#FDFDFB]'}`}>
       <section id='home' className='body-font z-10'>
-        <div className='container mx-auto flex px-6 sm:px-12 lg:px-20 py-20 lg:py-32 flex-col lg:flex-row items-center justify-between gap-16'>
+        <div className='container mx-auto flex px-6 sm:px-12 lg:px-20 py-10 lg:py-32 flex-col lg:flex-row items-center justify-between gap-12'>
           
           <div className='lg:w-3/5 w-full flex flex-col items-center lg:items-start text-center lg:text-left'>
             
-            <div className='flex justify-center lg:justify-start gap-8 mb-10 w-full'>
+            <div className='flex justify-center lg:justify-start gap-8 mb-8 w-full'>
               {socialIcons.map((social, index) => (
                 <a
                   key={index}
