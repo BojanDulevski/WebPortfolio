@@ -1,13 +1,8 @@
 import React from 'react';
 import hero from '../assets/hero.png'
-<<<<<<< HEAD
 import CV from '../assets/BojanCV.pdf'
-import { DownloadIcon, Mail } from 'lucide-react'
-=======
-import CV from '../assets/CV.jpg'
 import { DownloadIcon, Mail as MailLucide } from 'lucide-react'
 import { FaInstagram, FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
->>>>>>> dd0c69544a462728b41b093e8ecb52033f925b86
 
 const Hero = ({ darkmode }) => {
   
