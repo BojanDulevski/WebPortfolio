@@ -1,5 +1,5 @@
-import React from 'react' // Додадено
-import { motion } from 'framer-motion' // Ова го решава Uncaught ReferenceError
+import React from 'react'
+import { motion } from 'framer-motion'
 import javascript from '../assets/JavaScript.png'
 import react from '../assets/react.svg'
 import tailwind from '../assets/tailwind.png'
@@ -44,12 +44,20 @@ const Skills = ({ darkmode }) => {
           </h2>
           <div className={`h-1.5 w-24 mx-auto rounded-full mb-8 ${darkmode ? 'bg-[#A3AD91]' : 'bg-[#556B2F]'}`}></div>
           
-          <button className={`inline-flex items-center justify-center py-4 px-12 rounded-2xl text-xl font-black uppercase tracking-widest text-white transition-all duration-300 transform hover:-translate-y-1 shadow-xl cursor-pointer ${theme.btnBg}`}>
-            View Full Stack
-          </button>
+         
+          <a 
+            href="https://github.com/BojanDulevski" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="inline-block"
+          >
+            <button className={`inline-flex items-center justify-center py-4 px-12 rounded-2xl text-xl font-black uppercase tracking-widest text-white transition-all duration-300 transform hover:-translate-y-1 shadow-xl cursor-pointer ${theme.btnBg}`}>
+              View Full Stack
+            </button>
+          </a>
         </div>
 
-        {/* SKILLS GRID */}
+        
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
           {skills.map((skill, index) => (
             <div 
@@ -76,7 +84,7 @@ const Skills = ({ darkmode }) => {
                 </span>
               </div>
 
-              {/* PROGRESS BAR */}
+              
               <div className={`w-full rounded-full h-4 overflow-hidden p-1 ${theme.barContainer}`}>
                 <motion.div 
                   initial={{ width: 0 }}
@@ -87,11 +95,12 @@ const Skills = ({ darkmode }) => {
                 ></motion.div>
               </div>
               
+              
               <div className={`mt-6 w-0 group-hover:w-full h-1 transition-all duration-700 rounded-full bg-gradient-to-r ${skill.color}`}></div>
             </div>
           ))}
         </div>
-      </div>
+      </div>  
     </section>
   );
 };
